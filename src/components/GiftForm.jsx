@@ -110,6 +110,10 @@ function GiftForm() {
         চ্যালেঞ্জ জেতার পরে এখানে তোমার তথ্য জমা দাও। তোমার তথ্য Pure Generation
         কারো সাথে শেয়ার করে না।
       </p>
+      <p className="text-sm text-gray-600 text-center mb-8">
+        {" "}
+        তথ্য জমা দেওয়ার ৭-১০ পর আপনি পুরস্কার পাবেন।
+      </p>
       <p className="text-md text-red-500 text-center">
         {error ? error : successMessage}
       </p>
