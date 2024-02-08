@@ -42,11 +42,12 @@ function Team() {
             href="https://www.facebook.com/groups/751938203217953"
             target="_blank"
             rel="noreferrer"
+            className="text-green-700 mt-7"
           >
             https://www.facebook.com/groups/751938203217953
           </a>
         </div>
-        <div className="flex items-center space-x-4 md:w-1/2">
+        <div className="flex items-center space-x-4 md:w-1/2 mt-10">
           <div className="flex items-center bg-gray-200 px-4 py-2 rounded-full text-blue-500">
             <FaHeart className="mr-2" /> {/* ... (Dynamic text for gifts) */}
           </div>
