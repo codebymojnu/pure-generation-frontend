@@ -33,6 +33,7 @@ function FinishedChallenges() {
           // Create table rows with data
           setChallenges(data);
           setIsLoading(false);
+          console.log(data);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -89,7 +90,7 @@ function FinishedChallenges() {
                   </td>
                   <td className="px-4 py-2">{challenge.challengeName}</td>
                   <td className="px-4 py-2 hidden md:table-cell">
-                    {challenge.address}
+                    ওয়ার্ড {challenge.wardNo}, {challenge.villageName}
                   </td>
                   <td className="px-4 py-2 hidden md:table-cell">
                     {challenge.invitationMember1}, {challenge.invitationMember2}

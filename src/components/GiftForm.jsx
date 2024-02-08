@@ -40,7 +40,7 @@ function GiftForm() {
     if (name === "wardNo") {
       setFormData((prevData) => ({
         ...prevData,
-        villageName: "",
+        villageName: "", // Reset villageName when wardNo changes
       }));
     }
   };
@@ -197,9 +197,9 @@ function GiftForm() {
             required
           >
             {formData.wardNo ? null : <option value="">গ্রামের নাম</option>}
-            {villageOptions.map((village, index) => (
-              <option key={index} value={village}>
-                {village}
+            {villageOptions.map((villageName, index) => (
+              <option key={index} value={villageName}>
+                {villageName}
               </option>
             ))}
           </select>
