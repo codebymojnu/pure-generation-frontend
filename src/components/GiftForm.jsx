@@ -71,7 +71,7 @@ function GiftForm() {
         if (!response.ok) {
           throw new Error("Failed to submit form data");
         }
-        setSuccessMessage("তথ্য জমা সফল হয়েছে");
+        setSuccessMessage("আপনার তথ্য জমা সফল হয়েছে");
         console.log("Form data submitted successfully");
         // Optionally, reset the form fields after successful submission
         setFormData({
@@ -112,9 +112,9 @@ function GiftForm() {
       </p>
       <p className="text-sm text-gray-600 text-center mb-8">
         {" "}
-        তথ্য জমা দেওয়ার ৭-১০ পর আপনি পুরস্কার পাবেন।
+        তথ্য জমা দেওয়ার ৭-১০ দিন পর আপনি পুরস্কার পাবেন।
       </p>
-      <p className="text-md text-red-500 text-center">
+      <p className="text-md text-red-500 text-center mb-5">
         {error ? error : successMessage}
       </p>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
