@@ -73,9 +73,7 @@ function GiftForm() {
     setIsSubmitting(true);
     if (!formData.post) {
       // If not checked, show an error message or handle it as needed
-      setError(
-        "আপনি সপ্তাহে দুইটি করে পোস্ট গ্রুপে লিখেন— স্বাস্থ্য, ধর্ম, জীবনী, সাহিত্য, বিজ্ঞান। এটা কনফার্ম করুন ফর্মে।"
-      );
+      setError("সপ্তাহে দুইটি করে পোস্ট গ্রুপে লিখেন— Yes ঘরটি মার্ক করুন");
       return; // Prevent form submission
     } else {
       setError(null);
@@ -129,10 +127,10 @@ function GiftForm() {
       }}
     >
       <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">
-        আপনার পুরস্কার গ্রহণ করুন
+        পুরস্কার গ্রহণ করুন
       </h2>
-      <p className="text-lg text-gray-600 text-center mb-4">
-        চ্যালেঞ্জ জেতার পরে আপনার তথ্য জমা দিন। তোমার তথ্য Pure Generation কারো
+      <p className="text-lg text-gray-600 lg:text-center mb-4">
+        চ্যালেঞ্জ জেতার পরে আপনার তথ্য জমা দিন। আপনার তথ্য Pure Generation কারো
         সাথে শেয়ার করে না।
       </p>
       <p className="text-sm text-gray-600 text-center mb-8">
@@ -143,7 +141,7 @@ function GiftForm() {
         {error ? error : successMessage}
       </p>
       {isSubmitting && (
-        <p className="text-center transition-opacity duration-300 opacity-100">
+        <p className="text-center transition-opacity duration-300 opacity-100 mb-3">
           তথ্য পাঠানো হচ্ছে...
         </p>
       )}
@@ -303,9 +301,9 @@ function GiftForm() {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-3"
         >
-          তথ্য পাঠাও
+          তথ্য জমা দিন
         </button>
       </form>
     </div>

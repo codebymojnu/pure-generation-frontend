@@ -64,9 +64,9 @@ function FinishedChallenges() {
           <table className="table-auto w-full">
             <thead>
               <tr className="bg-gray-200 text-gray-700">
-                <th className="px-4 py-2">Date</th>
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Challenge Name</th>
+                <th className="px-4 py-2">তারিখ</th>
+                <th className="px-4 py-2 text-left">বিজয়ীর নাম</th>
+                <th className="px-4 py-2 text-left">চ্যালেঞ্জের নাম</th>
                 <th className="px-4 py-2 hidden md:table-cell">Address</th>
                 <th className="px-4 py-2 hidden md:table-cell">
                   Invitation Member
@@ -84,11 +84,13 @@ function FinishedChallenges() {
                     <FaCalendarAlt className="inline-block mr-1" />
                     {challenge.date}
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 lg:text-left">
                     <FaUser className="inline-block mr-1" />
                     {challenge.name}
                   </td>
-                  <td className="px-4 py-2">{challenge.challengeName}</td>
+                  <td className="px-4 py-2 lg:text-left">
+                    {challenge.challengeName}
+                  </td>
                   <td className="px-4 py-2 hidden md:table-cell">
                     ওয়ার্ড {challenge.wardNo}, {challenge.villageName}
                   </td>
