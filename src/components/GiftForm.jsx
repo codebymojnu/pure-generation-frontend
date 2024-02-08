@@ -57,13 +57,16 @@ function GiftForm() {
     } else {
       setError(null);
       try {
-        const response = await fetch("http://localhost:3000/giftdata", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+        const response = await fetch(
+          "https://pg-backend-nine.vercel.app/giftdata",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to submit form data");

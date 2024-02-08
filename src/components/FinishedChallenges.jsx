@@ -17,7 +17,7 @@ function FinishedChallenges() {
       navigate("/login");
     } else {
       // Fetch finished challenges data from backend using JWT token
-      fetch(`http://localhost:3000/giftdata`, {
+      fetch(`https://pg-backend-nine.vercel.app/giftdata`, {
         method: "GET",
         headers: {
           Authorization: token,

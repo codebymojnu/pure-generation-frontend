@@ -6,7 +6,7 @@ function Team() {
   const [isLoading, setIsLoading] = useState(true); // Track loading state
 
   useEffect(() => {
-    fetch("http://localhost:3000/members")
+    fetch("https://pg-backend-nine.vercel.app/members")
       .then((response) => response.json())
       .then((data) => {
         setMembers(data);
@@ -37,6 +37,14 @@ function Team() {
             ২ টি বই কিংবা ১ টি-শার্ট উপহার দিয়ে অথবা ফেসবুক গ্রুপে ১০ জন মেম্বার
             বাড়িয়ে আমাদের টিমে জয়েন হতে পারবেন।
           </p>
+
+          <a
+            href="https://www.facebook.com/groups/751938203217953"
+            target="_blank"
+            rel="noreferrer"
+          >
+            https://www.facebook.com/groups/751938203217953
+          </a>
         </div>
         <div className="flex items-center space-x-4 md:w-1/2">
           <div className="flex items-center bg-gray-200 px-4 py-2 rounded-full text-blue-500">

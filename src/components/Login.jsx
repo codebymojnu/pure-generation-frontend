@@ -10,7 +10,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Send login credentials to backend for authentication
-    fetch("http://localhost:3000/auth/login", {
+    fetch("https://pg-backend-nine.vercel.app/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,6 +39,11 @@ function Login() {
     <div className="flex justify-center items-center mt-28">
       <div className="bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <div className="flex justify-center mt-5">
+          <span className="text-sm text-black-500 mb-5">
+            username: admin | password: 1234567890
+          </span>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
