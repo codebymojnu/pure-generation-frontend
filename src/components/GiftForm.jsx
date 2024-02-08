@@ -22,6 +22,7 @@ function GiftForm() {
 
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(null);
 
   const villageData = {
     1: [
@@ -44,23 +45,32 @@ function GiftForm() {
 
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    console.log(name, value, checked, type);
 
     if (name === "wardNo") {
+      // Set villageName to the default value corresponding to the selected wardNo
+      const defaultVillageName = villageData[value]
+        ? villageData[value][0]
+        : "";
       setFormData((prevData) => ({
         ...prevData,
-        villageName: "", // Reset villageName when wardNo changes
+        wardNo: value,
+        villageName: defaultVillageName,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === "checkbox" ? checked : value,
       }));
     }
+    console.log(formData);
   };
+
+  console.log(formData);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setIsSubmitting(true);
     if (!formData.post) {
       // If not checked, show an error message or handle it as needed
       setError(
@@ -101,7 +111,9 @@ function GiftForm() {
         console.error("Error submitting form data:", error.message);
         // Handle error and display on UI
         // For example, set an error state to display an error message on the UI
-        setError("Failed to submit form data. Please try again.");
+        setError("তথ্য জমা ব্যর্থ হয়েছে। আবার চেষ্টা করুন।");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -116,12 +128,12 @@ function GiftForm() {
         fontWeight: 400,
       }}
     >
-      <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">
+      <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">
         আপনার পুরস্কার গ্রহণ করুন
       </h2>
-      <p className="text-lg text-gray-600 text-center mb-8">
-        চ্যালেঞ্জ জেতার পরে এখানে তোমার তথ্য জমা দাও। তোমার তথ্য Pure Generation
-        কারো সাথে শেয়ার করে না।
+      <p className="text-lg text-gray-600 text-center mb-4">
+        চ্যালেঞ্জ জেতার পরে আপনার তথ্য জমা দিন। তোমার তথ্য Pure Generation কারো
+        সাথে শেয়ার করে না।
       </p>
       <p className="text-sm text-gray-600 text-center mb-8">
         {" "}
@@ -130,6 +142,11 @@ function GiftForm() {
       <p className="text-md text-red-500 text-center mb-5">
         {error ? error : successMessage}
       </p>
+      {isSubmitting && (
+        <p className="text-center transition-opacity duration-300 opacity-100">
+          তথ্য পাঠানো হচ্ছে...
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
           <div className="mb-4 flex items-center">
@@ -161,11 +178,11 @@ function GiftForm() {
               required
             >
               <option value="">আপনি কয়দিনের চ্যালেঞ্জ শেষ করেছেন?</option>
-              <option value="7day">7 Days</option>
-              <option value="30day">30 Days</option>
-              <option value="90day">90 Days</option>
-              <option value="120day">120 Days</option>
-              <option value="365day">365 Days</option>
+              <option value="7day">৭ দিন</option>
+              <option value="30day">৩০ দিন</option>
+              <option value="90day">৯০ দিন</option>
+              <option value="120day">১২০ দিন</option>
+              <option value="365day">৩৬৫ দিন</option>
               {/* Add more options */}
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none">
@@ -226,7 +243,7 @@ function GiftForm() {
         </div>
 
         <div className="flex justify-center mt-5">
-          <span className="text-xs text-red-400">
+          <span className="text-xs text-green-400">
             উপহার পেতে ফেসবুক গ্রুপে কমপক্ষে ২ জন মেম্বার জয়েন করাতে হবে, উনাদের
             নাম:
           </span>
