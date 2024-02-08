@@ -24,8 +24,21 @@ function GiftForm() {
   const [successMessage, setSuccessMessage] = useState(null);
 
   const villageData = {
-    1: ["Poschim Berubari", "Moballek Para", "Mirar Vita", "Berubari Sadar"],
-    2: ["Nageswari", "Berubari 32", "Intamal"],
+    1: [
+      "পশ্চিম বেরুবাড়ী",
+      "মোবাল্লেক পাড়া",
+      "মিরার ভিটা",
+      "বেরুবাড়ী সদর",
+      "সাতানী",
+    ],
+    2: ["মওয়ামারী", "গাছপাড়ী"],
+    3: ["শালমারা", "টুপামারী"],
+    4: ["বালিয়ার কুটি", "চররহমানের কুটি"],
+    5: ["চর বেরুবাড়ী"],
+    6: ["চর বেরুবাড়ী"],
+    7: ["চিলমারী", "নকুলারপাড়"],
+    8: ["খেলারভিটা", "খামারনকুলা"],
+    9: ["নতুনচর", "বামনের ভিটা", "ইসলামপুর"],
     // Add more ward-village mappings as needed
   };
 
@@ -183,8 +196,15 @@ function GiftForm() {
             required
           >
             <option value="">আপনার ওয়ার্ড নাম্বার</option>
-            <option value="1">Ward 1</option>
-            <option value="2">Ward 2</option>
+            <option value="1">ওয়ার্ড ১</option>
+            <option value="2">ওয়ার্ড ২</option>
+            <option value="3">ওয়ার্ড ৩</option>
+            <option value="4">ওয়ার্ড ৪</option>
+            <option value="5">ওয়ার্ড ৫</option>
+            <option value="6">ওয়ার্ড ৬</option>
+            <option value="7">ওয়ার্ড ৭</option>
+            <option value="8">ওয়ার্ড ৮</option>
+            <option value="9">ওয়ার্ড ৯</option>
             {/* Add more options */}
           </select>
 
@@ -216,7 +236,7 @@ function GiftForm() {
           <input
             type="text"
             name="invitationMember1"
-            placeholder="মেম্বারের নাম ১"
+            placeholder="১ম জনের নাম লিখুন"
             className="border-b-2 focus:outline-none w-full"
             onChange={handleChange}
             value={formData.invitationMember1}
@@ -227,7 +247,7 @@ function GiftForm() {
           <input
             type="text"
             name="invitationMember2"
-            placeholder="মেম্বারের নাম ২"
+            placeholder="২য় জনের নাম লিখুন"
             className="border-b-2 focus:outline-none w-full"
             onChange={handleChange}
             value={formData.invitationMember2}
@@ -241,7 +261,7 @@ function GiftForm() {
             type="text"
             name="contactNumber"
             placeholder="Contact Number"
-            className="border-none focus-outline-none w-full"
+            className="border-none focus:outline-none w-full"
             onChange={handleChange}
             value={formData.contactNumber}
             required
