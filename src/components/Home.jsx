@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaBook,
   FaCertificate,
@@ -10,6 +10,22 @@ import {
 } from "react-icons/fa";
 
 function Home() {
+  const [text, setText] = useState("");
+  const fullText =
+    "আমরা কাজ করি- তরুণদের স্বাস্থ্য ও স্বপ্ন নিয়ে। যেমন, তাদেরকে খারাপ ভিডিও না দেখতে উৎসাহিত করা। এবং তাদের সকালে ঘুম থেকে উঠে ব্যায়ামের জন্য উৎসাহিত করা। মাদককে না বলা। জুয়াকে না বলা প্রভৃতি...";
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const intervalId = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setText(fullText.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 100); // Adjust the interval duration for typing speed
+  }, [fullText]);
   return (
     <div
       className="min-h-screen py-8 px-4 sm:px-6 lg:px-8"
@@ -25,12 +41,7 @@ function Home() {
         <h2 className="text-sm lg:text-lg lg:font-semibold text-gray-700 mb-6 text-center">
           তোমার স্বপ্ন, তোমার নিয়ন্ত্রণ, তোমার ভবিষ্যৎ
         </h2>
-        <p className="text-lg text-gray-700 mb-6">
-          আমরা কাজ করি- তরুণদের স্বাস্থ্য ও স্বপ্ন নিয়ে। যেমন, তাদেরকে
-          <span className="text-red-500"> খারাপ ভিডিও </span> না দেখতে উৎসাহিত
-          করা। এবং তাদের সকালে ঘুম থেকে উঠে ব্যায়ামের জন্য উৎসাহিত করা। মাদককে
-          না বলা। জুয়াকে না বলা।
-        </p>
+        <p className="text-lg text-gray-700 mb-6">{text}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="bg-white rounded-md p-6 shadow-md">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
