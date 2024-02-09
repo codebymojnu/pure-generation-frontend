@@ -6,9 +6,12 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setError(false);
     // Send login credentials to backend for authentication
     fetch("https://pg-backend-nine.vercel.app/auth/login", {
       method: "POST",
@@ -27,11 +30,15 @@ function Login() {
         // Store JWT token in localStorage
         localStorage.setItem("token", data.token);
         // Redirect user to Finished Challenges page
+        setIsSubmitting(false);
         navigate("/finished-challenges");
       })
       .catch((error) => {
+        setIsSubmitting(false);
         console.error("Error:", error);
-        setError("Invalid username or password");
+        setError(
+          "ভুল তথ্য দিয়েছেন। সঠিক ইউজার নেম ও পার্সওয়ার্ড দিয়ে আবার চেষ্টা করুন।"
+        );
       });
   };
 
@@ -51,7 +58,10 @@ function Login() {
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500"
               placeholder="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => {
+                setError(false);
+                setUsername(e.target.value);
+              }}
             />
           </div>
           <div className="mb-4">
@@ -60,7 +70,10 @@ function Login() {
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setError(false);
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <button
@@ -69,7 +82,12 @@ function Login() {
           >
             Login
           </button>
-          {error && <p className="text-red-500 mt-2">{error}</p>}
+          {error && <p className="text-red-500 mt-4">{error}</p>}
+          {isSubmitting && (
+            <p className=" text-green-500 transition-opacity duration-300 opacity-100 mt-4 mb-3">
+              তথ্য চেকিং হচ্ছে। দয়া করে অপেক্ষা করুন...
+            </p>
+          )}
         </form>
       </div>
     </div>
