@@ -36,9 +36,7 @@ function Login() {
       .catch((error) => {
         setIsSubmitting(false);
         console.error("Error:", error);
-        setError(
-          "ভুল তথ্য দিয়েছেন। সঠিক ইউজার নেম ও পার্সওয়ার্ড দিয়ে আবার চেষ্টা করুন।"
-        );
+        setError("ভুল তথ্য দিয়েছেন। আবার চেষ্টা করুন।");
       });
   };
 
